@@ -1,31 +1,53 @@
+/* Self-hosted variable fonts. Fraunces via the opsz subset: optical size + weight,
+   without the WONK/SOFT axes, which keeps it institutional rather than quirky. */
+@import "@fontsource-variable/fraunces/opsz.css";
+@import "@fontsource-variable/inter/wght.css";
 @import "tailwindcss";
 
-/* Brand tokens - see BRAND.md for rationale and usage rules. */
+/* Brand tokens - see BRAND.md for rationale and usage rules.
+   The two marca-* values are sampled from assets/logo_background1.png and are the
+   logo itself: never redefine them. The ramps hold their hue and only move lightness,
+   because both logo colours are far too light to carry text. */
 @theme {
-	--color-abismo-950: #04202b;
+	--color-marca-verde: #a4c842;
+	--color-marca-azul: #8acef4;
+
+	--color-verde-50: #f7faef;
+	--color-verde-100: #e8f1d0;
+	--color-verde-300: #d1e3a0;
+	--color-verde-400: #bbd671;
+	--color-verde-500: var(--color-marca-verde);
+	--color-verde-600: #86a630;
+	--color-verde-700: #6d8627;
+	--color-verde-800: #53671e;
+
+	--color-azul-50: #ecf7fd;
+	--color-azul-100: #c7e8fa;
+	--color-azul-300: var(--color-marca-azul);
+	--color-azul-500: #1fa1ea;
+	--color-azul-600: #1284c4;
+	--color-azul-700: #0f6b9e;
+	--color-azul-800: #0b5279;
+
+	/* Deep ground: the azul hue taken down and desaturated. */
 	--color-abismo-900: #052a38;
 	--color-abismo-800: #073a4c;
 
-	--color-oceano-700: #08506e;
-	--color-oceano-600: #0b6388;
-	--color-oceano-500: #1183ad;
-	--color-oceano-300: #7cc4de;
-	--color-oceano-50: #eef7fb;
-
-	--color-arrecife-700: #06705d;
-	--color-arrecife-600: #0a8f77;
-	--color-arrecife-400: #22b99a;
-	--color-arrecife-50: #eafaf5;
-
-	--color-arena-700: #9a6c12;
-	--color-arena-500: #d6aa42;
-	--color-arena-100: #f6ecd6;
-
+	/* Reserved for Azteca / biodiversity content only. */
 	--color-coral-600: #c04a33;
 	--color-coral-500: #e56f5a;
 
-	--font-display: "Fraunces", ui-serif, Georgia, serif;
-	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+	--font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+	--animate-tide: tide 9s linear infinite;
+}
+
+@keyframes tide {
+	to {
+		/* exactly one wave period in Logo's user units */
+		transform: translateX(-100px);
+	}
 }
 
 @layer base {
@@ -53,6 +75,53 @@
 	}
 
 	:focus-visible {
-		@apply outline-2 outline-offset-2 outline-oceano-600;
+		@apply outline-2 outline-offset-2 outline-azul-700;
+	}
+}
+
+/* Intro curtain. Plain CSS because it is one self-contained sequence with staggered
+   delays; the global prefers-reduced-motion rule above neutralises all of it. */
+@keyframes intro-rise {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes intro-fill {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+@keyframes intro-seal {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@layer components {
+	.intro-seal {
+		transform-origin: center;
+		animation: intro-seal 1s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+	}
+
+	.intro-rise {
+		animation: intro-rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+	}
+
+	.intro-bar {
+		transform-origin: left;
+		animation: intro-fill 2s cubic-bezier(0.3, 0.7, 0.4, 1) 0.2s both;
 	}
 }
