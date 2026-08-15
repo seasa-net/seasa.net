@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Brand tokens - see BRAND.md for rationale and usage rules. */
+@theme {
+	--color-abismo-950: #04202b;
+	--color-abismo-900: #052a38;
+	--color-abismo-800: #073a4c;
+
+	--color-oceano-700: #08506e;
+	--color-oceano-600: #0b6388;
+	--color-oceano-500: #1183ad;
+	--color-oceano-300: #7cc4de;
+	--color-oceano-50: #eef7fb;
+
+	--color-arrecife-700: #06705d;
+	--color-arrecife-600: #0a8f77;
+	--color-arrecife-400: #22b99a;
+	--color-arrecife-50: #eafaf5;
+
+	--color-arena-700: #9a6c12;
+	--color-arena-500: #d6aa42;
+	--color-arena-100: #f6ecd6;
+
+	--color-coral-600: #c04a33;
+	--color-coral-500: #e56f5a;
+
+	--font-display: "Fraunces", ui-serif, Georgia, serif;
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			/* biome-ignore-start lint/complexity/noImportantStyles: must beat any component animation */
+			animation-duration: 0.01ms !important;
+			transition-duration: 0.01ms !important;
+			/* biome-ignore-end lint/complexity/noImportantStyles: must beat any component animation */
+		}
+	}
+
+	body {
+		@apply bg-white text-abismo-900 font-sans antialiased;
+	}
+
+	:focus-visible {
+		@apply outline-2 outline-offset-2 outline-oceano-600;
+	}
+}
