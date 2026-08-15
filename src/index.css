@@ -99,6 +99,15 @@
 		transform: scaleX(1);
 	}
 }
+@keyframes panel-in {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: none;
+	}
+}
+
 @keyframes intro-seal {
 	from {
 		opacity: 0;

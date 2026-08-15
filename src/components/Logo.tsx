@@ -7,7 +7,7 @@
  * period (-100) loops seamlessly.
  */
 
-const WAVE = [
+export const WAVE = [
 	"M 0 52",
 	"C 16.7 44, 33.3 44, 50 52",
 	"C 66.7 60, 83.3 60, 100 52",

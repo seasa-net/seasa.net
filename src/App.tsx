@@ -1,19 +1,23 @@
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
 import Intro from "./components/Intro";
+import { useT } from "./i18n";
 
 export default function App() {
+	const t = useT();
+
 	return (
 		<>
 			<Intro />
-			<main className="mx-auto grid min-h-dvh max-w-3xl place-content-center gap-4 px-6 text-center">
-				<p className="font-medium text-azul-700 text-sm uppercase tracking-[0.2em]">
-					Soluciones Ambientales · Energía
-				</p>
-				<h1 className="font-display text-5xl text-abismo-900 leading-tight">
-					SEASA
-				</h1>
-				<p className="text-abismo-800/70 text-lg">
-					Sistemas de Energía Alternativa y Soluciones Ambientales.
-				</p>
+			<a
+				href="#contenido"
+				className="sr-only rounded-full bg-abismo-900 px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+			>
+				{t("skip.content")}
+			</a>
+			<Header />
+			<main id="contenido">
+				<Hero />
 			</main>
 		</>
 	);
