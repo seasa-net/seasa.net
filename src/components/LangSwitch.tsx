@@ -9,7 +9,9 @@ export function LangSwitch({ className = "" }: { className?: string }) {
 
 	return (
 		<fieldset
-			className={`flex items-center gap-0.5 rounded-full border border-current/15 p-0.5 ${className}`}
+			// inline-flex, not flex: a fieldset is block-level, so inside a footer column
+			// it stretched to the full column width. The header hid it inside a flex row.
+			className={`inline-flex w-fit items-center gap-0.5 rounded-full border border-current/15 p-0.5 ${className}`}
 			aria-label={t("lang.label")}
 		>
 			{LOCALES.map((code) => (

@@ -69,6 +69,39 @@ const PATHS: Record<string, ReactNode> = {
 			<path d="M7 21h10" />
 		</>
 	),
+	// Lab: a volume you can turn.
+	cube: (
+		<>
+			<path d="M12 3 4 7.2v9.6L12 21l8-4.2V7.2z" />
+			<path d="M4 7.2 12 11.5l8-4.3" />
+			<path d="M12 11.5V21" />
+		</>
+	),
+	// Lab: stacked georeferenced layers.
+	layers: (
+		<>
+			<path d="m12 3 8.5 4.2L12 11.4 3.5 7.2z" />
+			<path d="m3.5 12 8.5 4.2 8.5-4.2" />
+			<path d="m3.5 16.8 8.5 4.2 8.5-4.2" />
+		</>
+	),
+	// Lab: a full turn around a viewpoint.
+	panorama: (
+		<>
+			<ellipse cx="12" cy="12" rx="9" ry="4.2" />
+			<path d="M6.6 15.2a9 9 0 1 0 10.8 0" />
+			<circle cx="12" cy="12" r="1.4" />
+		</>
+	),
+	// Lab: a document you take away.
+	download: (
+		<>
+			<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+			<path d="M14 3v5h5" />
+			<path d="M12 11v6" />
+			<path d="m9.5 14.5 2.5 2.5 2.5-2.5" />
+		</>
+	),
 	// Renewables: array plus resource.
 	solar: (
 		<>

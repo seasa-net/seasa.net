@@ -1,15 +1,16 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { LangSwitch } from "./LangSwitch";
 import { Logo } from "./Logo";
 
 const NAV: { href: string; key: MessageKey }[] = [
-	{ href: "#nosotros", key: "nav.about" },
-	{ href: "#servicios", key: "nav.services" },
-	{ href: "#proyectos", key: "nav.projects" },
-	{ href: "#arrecifes", key: "nav.reefs" },
+	{ href: "/#nosotros", key: "nav.about" },
+	{ href: "/#servicios", key: "nav.services" },
+	{ href: "/#proyectos", key: "nav.projects" },
+	{ href: "/#laboratorio", key: "nav.lab" },
 ];
 
 /** True once the hero no longer sits behind the bar, so the header can go from
@@ -39,34 +40,34 @@ export function Header() {
 			}`}
 		>
 			<div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:h-20 sm:px-8">
-				<a
-					href="#inicio"
+				<Link
+					to="/"
 					className="flex shrink-0 items-center gap-2.5 rounded-sm font-display text-xl tracking-[0.12em]"
 				>
 					<Logo animated className="h-8 w-8" />
 					SEASA
-				</a>
+				</Link>
 
 				<nav
 					aria-label={t("nav.sections")}
 					className="ml-auto hidden items-center gap-7 lg:flex"
 				>
 					{NAV.map(({ href, key }) => (
-						<a
+						<Link
 							key={href}
-							href={href}
+							to={href}
 							className="font-medium text-[15px] text-current/75 transition-colors hover:text-current"
 						>
 							{t(key)}
-						</a>
+						</Link>
 					))}
 				</nav>
 
 				<div className="ml-auto flex items-center gap-3 lg:ml-0">
 					<LangSwitch />
 
-					<a
-						href="#contacto"
+					<Link
+						to="/#contacto"
 						className={`hidden rounded-full px-4 py-2 font-semibold text-sm transition-colors sm:inline-block ${
 							scrolled
 								? "bg-abismo-900 text-white hover:bg-azul-800"
@@ -74,7 +75,7 @@ export function Header() {
 						}`}
 					>
 						{t("nav.contact")}
-					</a>
+					</Link>
 
 					<Dialog.Root open={open} onOpenChange={setOpen}>
 						<Dialog.Trigger
@@ -115,12 +116,12 @@ export function Header() {
 								</nav>
 
 								<Dialog.Close asChild>
-									<a
-										href="#contacto"
+									<Link
+										to="/#contacto"
 										className="rounded-full bg-abismo-900 px-5 py-3 text-center font-semibold text-white"
 									>
 										{t("nav.contact")}
-									</a>
+									</Link>
 								</Dialog.Close>
 							</Dialog.Content>
 						</Dialog.Portal>

@@ -33,7 +33,7 @@
 	--color-abismo-900: #052a38;
 	--color-abismo-800: #073a4c;
 
-	/* Reserved for Azteca / biodiversity content only. */
+	/* Reserved for reef and biodiversity content only. */
 	--color-coral-600: #c04a33;
 	--color-coral-500: #e56f5a;
 
@@ -110,6 +110,17 @@
 	}
 	to {
 		transform: none;
+	}
+}
+
+@keyframes site-pulse {
+	from {
+		r: 5;
+		opacity: 0.9;
+	}
+	to {
+		r: 20;
+		opacity: 0;
 	}
 }
 

@@ -9,7 +9,7 @@ const es = {
 	"nav.about": "Nosotros",
 	"nav.services": "Servicios",
 	"nav.projects": "Proyectos",
-	"nav.reefs": "Arrecifes Azteca",
+	"nav.lab": "Laboratorio",
 	"nav.contact": "Cotizar",
 	"nav.menu": "Abrir menú",
 	"nav.close": "Cerrar menú",
@@ -133,6 +133,61 @@ const es = {
 		"Diseño de sistemas solares|Integración energética|Eficiencia y consumo|Sistemas híbridos|Soluciones para sitios remotos",
 	"svc.energy.cursor": "Solar",
 
+	"projects.eyebrow": "Proyectos",
+	"projects.title": "Presencia técnica en el litoral mexicano.",
+	"projects.lead":
+		"Selecciona un estado para ubicarlo en el mapa y ver el alcance del trabajo realizado ahí.",
+	"projects.explore": "Explorar proyecto",
+	"projects.map": "Mapa de proyectos por estado",
+	"projects.back": "Volver a proyectos",
+	"projects.soon": "La ficha completa de este proyecto está en preparación.",
+
+	"proj.campeche.place": "Laguna de Términos",
+	"proj.campeche.summary": "Arrecife Artificial Azteca, Laguna de Términos.",
+	"proj.bcs.place": "Bahía de La Paz",
+	"proj.bcs.summary":
+		"Arrecifes, hidrología, bancos de extracción, MIA y restauración.",
+	"proj.guerrero.place": "Isla Ixtapa y Las Gatas",
+	"proj.guerrero.summary":
+		"Fraccionamiento El Mirador, Isla Ixtapa y Museo Submarino Las Gatas.",
+	"proj.michoacan.place": "Costa de Michoacán",
+	"proj.michoacan.summary":
+		"Arrecifes artificiales, acuacultura y soluciones ambientales.",
+	"proj.oaxaca.place": "Bahías de Huatulco",
+	"proj.oaxaca.summary":
+		"Distribución de módulos y propuestas de restauración marina.",
+
+	"lab.eyebrow": "Laboratorio digital",
+	"lab.title":
+		"Herramientas que convierten el trabajo de campo en evidencia consultable.",
+	"lab.lead":
+		"Modelos, mapas, recorridos y documentos generados en proyectos reales. Una muestra aquí; el catálogo completo en el laboratorio.",
+	"lab.cta": "Entrar al laboratorio",
+	"lab.soon": "El laboratorio completo está en preparación.",
+
+	"lab.3d.name": "Modelos tridimensionales",
+	"lab.3d.body": "Visualización de módulos, predios, obras y estructuras.",
+	"lab.gis.name": "Mapas interactivos",
+	"lab.gis.body":
+		"Proyectos georreferenciados, polígonos, transectos y estaciones.",
+	"lab.360.name": "Recorridos virtuales",
+	"lab.360.body": "Fotogrametría, videos de dron y recorridos submarinos.",
+	"lab.pdf.name": "Centro de descargas",
+	"lab.pdf.body": "Fichas técnicas, folletos, presentaciones y publicaciones.",
+
+	"cloud.title": "Mapa de palabras del sitio",
+	"footer.home": "Inicio",
+	"footer.labPage": "Catálogo del laboratorio",
+	"footer.sitemap": "Mapa del sitio",
+	"footer.contact": "Contacto",
+	"footer.legal": "Legal",
+	"footer.privacy": "Aviso de privacidad",
+	"footer.terms": "Términos y condiciones",
+	"footer.tagline": "Ingeniería ambiental con evidencia de campo.",
+	"legal.updated": "Última actualización:",
+	"legal.review":
+		"Documento en borrador. Requiere revisión legal antes de publicarse y contiene marcadores entre corchetes que SEASA debe completar.",
+
 	"skip.content": "Saltar al contenido",
 } as const;
 
@@ -140,7 +195,7 @@ const en: Record<keyof typeof es, string> = {
 	"nav.about": "About",
 	"nav.services": "Services",
 	"nav.projects": "Projects",
-	"nav.reefs": "Azteca Reefs",
+	"nav.lab": "Lab",
 	"nav.contact": "Get a quote",
 	"nav.menu": "Open menu",
 	"nav.close": "Close menu",
@@ -263,6 +318,60 @@ const en: Record<keyof typeof es, string> = {
 	"svc.energy.points":
 		"Solar system design|Energy integration|Efficiency and consumption|Hybrid systems|Solutions for remote sites",
 	"svc.energy.cursor": "Solar",
+
+	"projects.eyebrow": "Projects",
+	"projects.title": "Technical presence along the Mexican coast.",
+	"projects.lead":
+		"Select a state to locate it on the map and see the scope of the work carried out there.",
+	"projects.explore": "Explore project",
+	"projects.map": "Map of projects by state",
+	"projects.back": "Back to projects",
+	"projects.soon": "The full record for this project is in preparation.",
+
+	"proj.campeche.place": "Laguna de Términos",
+	"proj.campeche.summary": "Azteca Artificial Reef, Laguna de Términos.",
+	"proj.bcs.place": "Bahía de La Paz",
+	"proj.bcs.summary":
+		"Reefs, hydrology, extraction banks, impact statements and restoration.",
+	"proj.guerrero.place": "Isla Ixtapa and Las Gatas",
+	"proj.guerrero.summary":
+		"El Mirador development, Isla Ixtapa and the Las Gatas Underwater Museum.",
+	"proj.michoacan.place": "Michoacán coast",
+	"proj.michoacan.summary":
+		"Artificial reefs, aquaculture and environmental solutions.",
+	"proj.oaxaca.place": "Bahías de Huatulco",
+	"proj.oaxaca.summary":
+		"Module distribution and marine restoration proposals.",
+
+	"lab.eyebrow": "Digital lab",
+	"lab.title": "Tools that turn field work into evidence anyone can consult.",
+	"lab.lead":
+		"Models, maps, walkthroughs and documents produced on real projects. A sample here; the full catalogue in the lab.",
+	"lab.cta": "Enter the lab",
+	"lab.soon": "The full lab is in preparation.",
+
+	"lab.3d.name": "Three-dimensional models",
+	"lab.3d.body": "Visualisation of modules, sites, works and structures.",
+	"lab.gis.name": "Interactive maps",
+	"lab.gis.body": "Georeferenced projects, polygons, transects and stations.",
+	"lab.360.name": "Virtual walkthroughs",
+	"lab.360.body": "Photogrammetry, drone video and underwater tours.",
+	"lab.pdf.name": "Download centre",
+	"lab.pdf.body":
+		"Technical sheets, brochures, presentations and publications.",
+
+	"cloud.title": "Site word map",
+	"footer.home": "Home",
+	"footer.labPage": "Lab catalogue",
+	"footer.sitemap": "Site map",
+	"footer.contact": "Contact",
+	"footer.legal": "Legal",
+	"footer.privacy": "Privacy notice",
+	"footer.terms": "Terms and conditions",
+	"footer.tagline": "Environmental engineering backed by field evidence.",
+	"legal.updated": "Last updated:",
+	"legal.review":
+		"Draft document. It requires legal review before publication and contains bracketed placeholders for SEASA to complete.",
 
 	"skip.content": "Skip to content",
 };

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEASA</title>
+    <script>
+      // GitHub Pages has no server-side rewrites, so a direct hit or refresh on
+      // /proyectos/campeche lands here. Stash the requested URL and bounce to the app
+      // root; main.tsx restores it before React Router mounts, so the deep link works.
+      //
+      // The "/" below is the deploy base. It is correct while public/CNAME serves the
+      // site at a domain root. If this ever ships to a project page instead, it has to
+      // become "/<repo>/" to match the base the workflow builds with.
+      (function () {
+        var base = "/";
+        var path = location.pathname + location.search + location.hash;
+        try {
+          sessionStorage.setItem("seasa:redirect", path);
+        } catch (e) {}
+        location.replace(location.origin + base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
