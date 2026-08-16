@@ -74,6 +74,11 @@
 		@apply bg-white text-abismo-900 font-sans antialiased;
 	}
 
+	/* Keep anchor targets clear of the fixed header. */
+	section[id] {
+		scroll-margin-top: 5.5rem;
+	}
+
 	:focus-visible {
 		@apply outline-2 outline-offset-2 outline-azul-700;
 	}
