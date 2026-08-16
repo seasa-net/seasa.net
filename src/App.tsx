@@ -1,14 +1,16 @@
 import { About } from "./components/About";
+import { CursorProvider } from "./components/cursor";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import Intro from "./components/Intro";
+import { Services } from "./components/Services";
 import { useT } from "./i18n";
 
 export default function App() {
 	const t = useT();
 
 	return (
-		<>
+		<CursorProvider>
 			<Intro />
 			<a
 				href="#contenido"
@@ -20,7 +22,8 @@ export default function App() {
 			<main id="contenido">
 				<Hero />
 				<About />
+				<Services />
 			</main>
-		</>
+		</CursorProvider>
 	);
 }

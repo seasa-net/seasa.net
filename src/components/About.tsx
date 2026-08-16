@@ -1,7 +1,8 @@
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
+import { ForceField } from "./ForceField";
 
-/* Misión takes the tierra half of the mark, Visión the agua half — the two brand
+/* Misión takes the tierra half of the mark, Visión the agua half. The two brand
    colours carry the two statements instead of decorating them. */
 const PILLARS = [
 	{
@@ -71,13 +72,19 @@ export function About() {
 
 				{/* Full container width, not nested in the right rail: three columns here
 				    give each blurb ~40 characters instead of ~32. */}
-				<div className="mt-16 border-abismo-900/10 border-t pt-10 sm:mt-20">
-					<h3 className="font-semibold text-[11px] text-abismo-800/60 uppercase tracking-[0.22em]">
+				<ForceField
+					tile={20}
+					className="mt-16 border-abismo-900/10 border-t pt-10 pb-12 sm:mt-20"
+				>
+					<h3
+						data-force-item
+						className="font-semibold text-[11px] text-abismo-800/60 uppercase tracking-[0.22em]"
+					>
 						{t("about.values.label")}
 					</h3>
 					<ul className="mt-8 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
 						{VALUES.map(([name, body], i) => (
-							<li key={name} className="flex gap-4">
+							<li key={name} data-force-item className="flex gap-4">
 								<span
 									aria-hidden="true"
 									className="pt-0.5 font-display text-azul-600 text-lg tabular-nums"
@@ -93,7 +100,7 @@ export function About() {
 							</li>
 						))}
 					</ul>
-				</div>
+				</ForceField>
 			</div>
 		</section>
 	);

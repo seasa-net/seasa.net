@@ -2,7 +2,7 @@ import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { WAVE } from "./Logo";
 
-// ponytail: prototype figures, unverified. Confirm with SEASA before launch —
+// ponytail: prototype figures, unverified. Confirm with SEASA before launch.
 // BRAND.md is explicit that an unsourced number reads as invented.
 const STATS: { value: string; key: MessageKey }[] = [
 	{ value: "20+", key: "hero.stat.years" },

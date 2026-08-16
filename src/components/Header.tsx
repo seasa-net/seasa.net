@@ -86,10 +86,10 @@ export function Header() {
 							<span className="block h-px w-5 bg-current" />
 						</Dialog.Trigger>
 
-						{/* Radix handles the focus trap, scroll lock, Escape and aria wiring —
+						{/* Radix handles the focus trap, scroll lock, Escape and aria wiring:
 						    the parts of a mobile menu that are easy to get subtly wrong. */}
 						<Dialog.Portal>
-							<Dialog.Overlay className="fixed inset-0 z-50 bg-abismo-900/40 backdrop-blur-sm data-[state=open]:animate-[intro-rise_0.2s_ease-out]" />
+							<Dialog.Overlay className="fixed inset-0 z-50 bg-abismo-900/40 backdrop-blur-sm data-[state=open]:animate-[fade-in_0.2s_ease-out]" />
 							<Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-[min(20rem,85vw)] flex-col gap-8 bg-white p-7 text-abismo-900 shadow-2xl data-[state=open]:animate-[panel-in_0.28s_cubic-bezier(0.2,0.7,0.3,1)]">
 								<Dialog.Title className="sr-only">
 									{t("nav.sections")}

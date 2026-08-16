@@ -1,5 +1,5 @@
 /**
- * SEASA mark, rebuilt from assets/logo_background1.png: a circle split by a wave —
+ * SEASA mark, rebuilt from assets/logo_background1.png: a circle split by a wave.
  * green above (tierra), blue below (agua). `animated` runs the tide loop that
  * assets/logo.gif shows in 120 frames and 4.8 MB; this does it in a few hundred bytes.
  *

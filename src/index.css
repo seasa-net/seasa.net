@@ -113,6 +113,30 @@
 	}
 }
 
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Animates `scale` only, never `transform`. Tailwind v4 centres the dialog with the
+   independent `translate` property, so a keyframe that also sets `transform:
+   translate(-50%,-50%)` applies the offset twice and the modal starts up and to the
+   left, then snaps to centre when the animation drops the transform. */
+@keyframes modal-in {
+	from {
+		opacity: 0;
+		scale: 0.96;
+	}
+	to {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
 @keyframes intro-seal {
 	from {
 		opacity: 0;
@@ -132,6 +156,54 @@
 
 	.intro-rise {
 		animation: intro-rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+	}
+
+	/* Glued graph-paper cell. The transition is what sells it: every rAF write
+	   restarts a 500ms ease, so tiles lag behind the cursor elastically instead of
+	   snapping, and settle back when it leaves. */
+	.force-tile {
+		background: var(--color-azul-50);
+		box-shadow:
+			inset -1px 0 0 rgb(5 42 56 / 0.05),
+			inset 0 -1px 0 rgb(5 42 56 / 0.05);
+		opacity: var(--tile-rest, 0.4);
+		/* No will-change here: it promotes every tile to its own compositor layer,
+		   and a few hundred layers exhausts GPU memory and freezes the renderer.
+		   The transition promotes only while a tile is actually moving. */
+		transition:
+			transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+			opacity 350ms ease-out;
+	}
+
+	/* Hide the native pointer only where the custom cursor replaces it, and only on
+	   devices that have one. The reduced-motion rule comes last so it wins. */
+	@media (pointer: fine) {
+		[data-cursor-target],
+		[data-cursor-target] * {
+			cursor: none;
+		}
+		/* Same specificity as the rule above, so source order decides: a swallowing
+		   control gets the normal click affordance back. */
+		[data-cursor-swallow],
+		[data-cursor-swallow] * {
+			cursor: pointer;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		[data-cursor-target],
+		[data-cursor-target] * {
+			cursor: auto;
+		}
+		/* `auto` on a button computes to `default`, not `pointer`, so the click
+		   affordance has to be restored explicitly here too. */
+		[data-cursor-swallow],
+		[data-cursor-swallow] * {
+			cursor: pointer;
+		}
+	}
+
+	[data-force-item] {
+		transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	.intro-bar {
