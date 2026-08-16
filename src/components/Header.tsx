@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { LangSwitch } from "./LangSwitch";
@@ -13,8 +13,7 @@ const NAV: { href: string; key: MessageKey }[] = [
 	{ href: "/#laboratorio", key: "nav.lab" },
 ];
 
-/** True once the hero no longer sits behind the bar, so the header can go from
-    transparent-over-hero to an opaque light bar over the rest of the page. */
+/** True once the hero no longer sits behind the bar. */
 function useScrolled(threshold = 24) {
 	const [scrolled, setScrolled] = useState(false);
 	useEffect(() => {
@@ -29,12 +28,17 @@ function useScrolled(threshold = 24) {
 export function Header() {
 	const t = useT();
 	const scrolled = useScrolled();
+	const { pathname } = useLocation();
+	// Only the home route puts a dark hero behind the bar. Everywhere else the page
+	// starts on white, so a transparent header with white text was invisible until you
+	// scrolled. Transparency is a property of what is underneath, not of scroll alone.
+	const solid = scrolled || pathname !== "/";
 	const [open, setOpen] = useState(false);
 
 	return (
 		<header
 			className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
-				scrolled
+				solid
 					? "border-abismo-900/10 border-b bg-white/85 text-abismo-900 backdrop-blur-md"
 					: "border-transparent border-b bg-transparent text-white"
 			}`}
@@ -69,7 +73,7 @@ export function Header() {
 					<Link
 						to="/#contacto"
 						className={`hidden rounded-full px-4 py-2 font-semibold text-sm transition-colors sm:inline-block ${
-							scrolled
+							solid
 								? "bg-abismo-900 text-white hover:bg-azul-800"
 								: "bg-marca-verde text-abismo-900 hover:bg-verde-400"
 						}`}
