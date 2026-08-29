@@ -1,11 +1,12 @@
 import { LEGAL } from "../data/legal";
-import { useLocaleStore, useT } from "../i18n";
+import { useDocumentMeta, useLocaleStore, useT } from "../i18n";
 
 /** One component, two routes: the document is picked by prop, not duplicated. */
 export function LegalPage({ doc }: { doc: "privacy" | "terms" }) {
 	const t = useT();
 	const locale = useLocaleStore((s) => s.locale);
 	const content = LEGAL[locale][doc];
+	useDocumentMeta(content.title);
 
 	return (
 		<article className="mx-auto max-w-3xl px-5 pt-32 pb-24 sm:px-8">

@@ -124,6 +124,18 @@
 	}
 }
 
+/* Gentle vertical drift with a touch of roll. Applied to an inner element so the
+   sticker's base rotation and flip live on the parent and the two never overwrite
+   each other. The global reduced-motion rule neutralises it. */
+@keyframes marine-drift {
+	from {
+		transform: translate3d(0, -0.55rem, 0) rotate(-1.6deg);
+	}
+	to {
+		transform: translate3d(0, 0.55rem, 0) rotate(1.6deg);
+	}
+}
+
 @keyframes fade-in {
 	from {
 		opacity: 0;
@@ -167,6 +179,42 @@
 
 	.intro-rise {
 		animation: intro-rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+	}
+
+	/* Scrim for text over photography.
+	   Written as plain CSS rather than Tailwind gradient utilities on purpose: v4
+	   interpolates gradients "in oklab" by default, and interpolating stops that differ
+	   only in alpha through a perceptual space produces visible horizontal banding over
+	   a photo. A plain linear-gradient interpolates in sRGB, and the extra stops make
+	   the ramp ease instead of kinking at the midpoint. */
+	.photo-scrim {
+		/* Two layers: a dither tile over the ramp.
+		   The ramp crosses ~43 quantisation levels across ~316px, which is one 8-bit
+		   step every ~7px, and steps that tall read as horizontal bands. A tiny
+		   black/white grain at 2-4% alpha pushes each pixel randomly across the
+		   threshold, so the steps dissolve. This is the same trick print uses. */
+		background-image: url("./assets/dither-noise.png"),
+			linear-gradient(
+				to top,
+				rgb(5 42 56) 0%,
+				rgb(5 42 56 / 0.95) 26%,
+				rgb(5 42 56 / 0.84) 46%,
+				rgb(5 42 56 / 0.66) 68%,
+				rgb(5 42 56 / 0.45) 100%
+			);
+		background-repeat: repeat, no-repeat;
+		background-size:
+			96px 96px,
+			100% 100%;
+	}
+
+	/* No will-change: a continuously running transform animation is promoted by the
+	   browser anyway, and declaring it on every sticker just pins extra layers. */
+	.marine-drift {
+		animation-name: marine-drift;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
 	}
 
 	/* Glued graph-paper cell. The transition is what sells it: every rAF write

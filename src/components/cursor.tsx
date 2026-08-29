@@ -8,7 +8,16 @@ import {
 	useState,
 } from "react";
 
-export type CursorHint = { icon?: ReactNode; label?: string };
+export type CursorHint = {
+	icon?: ReactNode;
+	label?: string;
+	/**
+	 * Tooltip treatment: small, sentence case, and offset down-right of the pointer
+	 * instead of centred on it. Use wherever the native cursor stays visible, since a
+	 * centred badge would sit on top of the thing being pointed at.
+	 */
+	compact?: boolean;
+};
 
 type CursorApi = {
 	show: (hint: CursorHint) => void;
@@ -110,7 +119,12 @@ export function CursorProvider({ children }: { children: ReactNode }) {
 					className="pointer-events-none fixed top-0 left-0 z-[60]"
 				>
 					<div
-						className={`-translate-x-1/2 -translate-y-1/2 flex items-center gap-2 rounded-full bg-abismo-900 py-2 pr-4 pl-2 text-white shadow-lg transition-[opacity,scale] duration-200 ease-out ${
+						className={`flex items-center bg-abismo-900 text-white shadow-lg transition-[opacity,scale] duration-150 ease-out ${
+							hint?.compact
+								? // Offset, so the pointer stays clear of what it is pointing at.
+									"origin-top-left translate-x-3.5 translate-y-4 gap-1.5 rounded-md px-2 py-1"
+								: "-translate-x-1/2 -translate-y-1/2 origin-center gap-2 rounded-full py-2 pr-4 pl-2"
+						} ${
 							hint && !swallowed
 								? "scale-100 opacity-100"
 								: swallowed
@@ -118,10 +132,21 @@ export function CursorProvider({ children }: { children: ReactNode }) {
 									: "scale-50 opacity-0"
 						}`}
 					>
-						<span className="grid h-7 w-7 place-content-center rounded-full bg-marca-verde text-abismo-900">
-							{hint?.icon}
-						</span>
-						<span className="whitespace-nowrap font-semibold text-xs uppercase tracking-[0.14em]">
+						{hint?.icon &&
+							(hint.compact ? (
+								<span className="text-marca-verde">{hint.icon}</span>
+							) : (
+								<span className="grid h-7 w-7 place-content-center rounded-full bg-marca-verde text-abismo-900">
+									{hint.icon}
+								</span>
+							))}
+						<span
+							className={
+								hint?.compact
+									? "whitespace-nowrap font-medium text-[11px]"
+									: "whitespace-nowrap font-semibold text-xs uppercase tracking-[0.14em]"
+							}
+						>
 							{hint?.label}
 						</span>
 					</div>
@@ -132,16 +157,24 @@ export function CursorProvider({ children }: { children: ReactNode }) {
 }
 
 /**
+ * The raw API, for callers that need a different hint per element and so cannot use a
+ * hook bound to a single hint. The map does this: 32 states, one name each.
+ */
+export function useCursor() {
+	return useContext(CursorContext);
+}
+
+/**
  * Spread the result onto any element to give it a custom cursor while hovered:
  * `<article {...useCursorTarget({ icon, label })}>`. Safe to call without a
  * provider mounted, in which case it is inert.
  */
 export function useCursorTarget(hint: CursorHint) {
 	const api = useContext(CursorContext);
-	const { icon, label } = hint;
+	const { icon, label, compact } = hint;
 	return {
 		"data-cursor-target": "" as const,
-		onPointerEnter: () => api?.show({ icon, label }),
+		onPointerEnter: () => api?.show({ icon, label, compact }),
 		onPointerLeave: () => api?.hide(),
 	};
 }

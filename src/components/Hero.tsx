@@ -1,13 +1,24 @@
+import { quoteMailto } from "../data/site";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { WAVE } from "./Logo";
+import { MarineField } from "./MarineField";
 
-// ponytail: prototype figures, unverified. Confirm with SEASA before launch.
-// BRAND.md is explicit that an unsourced number reads as invented.
+/*
+ * Every figure below is counted from the official company CV (CV SEASA 2026.pdf),
+ * not estimated:
+ *   15+  earliest documented project is 2010, so 2010-2026.
+ *   7    states with project work: Michoacán, Baja California Sur, Oaxaca, Guerrero,
+ *        Campeche, Morelos, Veracruz.
+ *   8    artificial reef projects: Bahía Magdalena (2011, 2018), Punta Abreojos (2012),
+ *        La Bocana (2012), Playa Azul (2016), Oaxaca coast (2018), Isla Aguada (2024)
+ *        and the 2026 confidential coastal project.
+ * The previous "3,500+ modules" claim was invented and has been removed.
+ */
 const STATS: { value: string; key: MessageKey }[] = [
-	{ value: "20+", key: "hero.stat.years" },
-	{ value: "5+", key: "hero.stat.states" },
-	{ value: "3,500+", key: "hero.stat.modules" },
+	{ value: "15+", key: "hero.stat.years" },
+	{ value: "7", key: "hero.stat.states" },
+	{ value: "8", key: "hero.stat.reefs" },
 ];
 
 /**
@@ -55,7 +66,69 @@ export function Hero() {
 			id="inicio"
 			className="relative isolate overflow-hidden bg-abismo-900 text-white"
 		>
-			{/* Depth, without photography we do not have yet. */}
+			{/* A manta drifting in the water column, well under the contrast floor so it
+			    never competes with the headline. */}
+			<MarineField
+				className="text-marca-azul"
+				items={[
+					{ name: "dolphin", x: 88, y: 30, w: 30, rot: -8, op: 0.09, dur: 16 },
+					{
+						name: "fish",
+						x: 72,
+						y: 68,
+						w: 9,
+						rot: 6,
+						flip: true,
+						op: 0.1,
+						dur: 11,
+						delay: 1.5,
+					},
+					{
+						name: "fish",
+						x: 80,
+						y: 78,
+						w: 6,
+						rot: -4,
+						flip: true,
+						op: 0.08,
+						dur: 13,
+						delay: 3,
+					},
+					{
+						name: "fish",
+						x: 18,
+						y: 78,
+						w: 7,
+						rot: 3,
+						op: 0.07,
+						dur: 12,
+						delay: 0.8,
+						lgOnly: true,
+					},
+					{
+						name: "wave",
+						x: 12,
+						y: 22,
+						w: 7,
+						rot: 0,
+						op: 0.09,
+						dur: 15,
+						delay: 2.2,
+					},
+					{
+						name: "coral",
+						x: 40,
+						y: 92,
+						w: 8,
+						rot: 2,
+						op: 0.07,
+						dur: 18,
+						delay: 1,
+					},
+				]}
+			/>
+
+			{/* Depth, layered over the silhouette. */}
 			<div
 				aria-hidden="true"
 				className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_15%_0%,rgba(164,200,66,0.18),transparent_70%),radial-gradient(55%_55%_at_85%_35%,rgba(138,206,244,0.22),transparent_70%)]"
@@ -76,7 +149,7 @@ export function Hero() {
 
 				<div className="mt-10 flex flex-wrap gap-3">
 					<a
-						href="#contacto"
+						href={quoteMailto(t("contact.subject"))}
 						className="rounded-full bg-marca-verde px-6 py-3.5 font-semibold text-abismo-900 transition-colors hover:bg-verde-400"
 					>
 						{t("hero.cta.primary")}

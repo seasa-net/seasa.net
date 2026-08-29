@@ -10,7 +10,7 @@ import { Lab } from "./components/Lab";
 import { Projects } from "./components/Projects";
 import { Services } from "./components/Services";
 import { WordCloud } from "./components/WordCloud";
-import { useT } from "./i18n";
+import { useDocumentMeta, useT } from "./i18n";
 import { LabPage } from "./pages/LabPage";
 import { LegalPage } from "./pages/LegalPage";
 import { ProjectStory } from "./pages/ProjectStory";
@@ -39,6 +39,8 @@ function ScrollToHash() {
 }
 
 function Home() {
+	const t = useT();
+	useDocumentMeta(t("title.home"));
 	return (
 		<>
 			<Hero />

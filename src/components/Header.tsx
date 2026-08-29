@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { quoteMailto } from "../data/site";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { LangSwitch } from "./LangSwitch";
@@ -70,8 +71,8 @@ export function Header() {
 				<div className="ml-auto flex items-center gap-3 lg:ml-0">
 					<LangSwitch />
 
-					<Link
-						to="/#contacto"
+					<a
+						href={quoteMailto(t("contact.subject"))}
 						className={`hidden rounded-full px-4 py-2 font-semibold text-sm transition-colors sm:inline-block ${
 							solid
 								? "bg-abismo-900 text-white hover:bg-azul-800"
@@ -79,7 +80,7 @@ export function Header() {
 						}`}
 					>
 						{t("nav.contact")}
-					</Link>
+					</a>
 
 					<Dialog.Root open={open} onOpenChange={setOpen}>
 						<Dialog.Trigger
@@ -109,23 +110,25 @@ export function Header() {
 								<nav className="flex flex-col gap-1">
 									{NAV.map(({ href, key }) => (
 										<Dialog.Close asChild key={href}>
-											<a
-												href={href}
+											{/* Link, not a plain anchor: these are in-app routes, and an
+											    anchor full-page reloads when used from a sub-page. */}
+											<Link
+												to={href}
 												className="border-abismo-900/8 border-b py-3 font-display text-2xl"
 											>
 												{t(key)}
-											</a>
+											</Link>
 										</Dialog.Close>
 									))}
 								</nav>
 
 								<Dialog.Close asChild>
-									<Link
-										to="/#contacto"
+									<a
+										href={quoteMailto(t("contact.subject"))}
 										className="rounded-full bg-abismo-900 px-5 py-3 text-center font-semibold text-white"
 									>
 										{t("nav.contact")}
-									</Link>
+									</a>
 								</Dialog.Close>
 							</Dialog.Content>
 						</Dialog.Portal>

@@ -2,6 +2,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CLOUD } from "../data/cloud";
 import { useLocaleStore, useT } from "../i18n";
+import { MarineField } from "./MarineField";
 
 const SIZE = {
 	4: "font-display text-[clamp(1.4rem,3.2vw,2.4rem)]",
@@ -171,8 +172,15 @@ export function WordCloud() {
 	return (
 		<section
 			aria-label={t("cloud.title")}
-			className="border-abismo-900/10 border-t bg-azul-50/40 py-16 sm:py-20"
+			className="relative isolate overflow-hidden border-abismo-900/10 border-t bg-azul-50/40 py-16 sm:py-20"
 		>
+			<MarineField
+				className="text-azul-800"
+				items={[
+					{ name: "fish", x: 5, y: 20, w: 8, rot: -6, op: 0.06, dur: 13 },
+					{ name: "wave", x: 95, y: 78, w: 7, op: 0.06, dur: 15, delay: 2 },
+				]}
+			/>
 			<div className="mx-auto max-w-5xl px-5 sm:px-8">
 				<div
 					ref={root}

@@ -4,13 +4,13 @@ const geo = JSON.parse(
 	readFileSync(new URL("./mexico-source.geo.json", import.meta.url), "utf8"),
 );
 
-// Approximate site coordinates for the five project states. These place the marker
-// near the named location, not on a surveyed boundary; SEASA has to confirm them.
+// Site coordinates for the five project states, taken from the place names in the
+// company CV. They locate the named town or bay, not a surveyed project boundary.
 const SITES = {
 	campeche: { lon: -91.55, lat: 18.65 }, // Laguna de Terminos
 	bcs: { lon: -110.31, lat: 24.14 }, // Bahia de La Paz
 	guerrero: { lon: -101.55, lat: 17.63 }, // Isla Ixtapa / Las Gatas, Zihuatanejo
-	michoacan: { lon: -102.19, lat: 17.96 }, // Costa de Michoacan
+	michoacan: { lon: -102.35, lat: 17.99 }, // Playa Azul, Lazaro Cardenas
 	oaxaca: { lon: -96.13, lat: 15.75 }, // Bahias de Huatulco
 };
 

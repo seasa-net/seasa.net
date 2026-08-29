@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
+import { MarineField } from "./MarineField";
 import { type IconName, ServiceIcon } from "./ServiceIcon";
 
 /* The short code is the mark here, as in the original brief. The icon supports it
@@ -30,6 +31,33 @@ export function Lab() {
 					<div
 						aria-hidden="true"
 						className="-z-10 absolute inset-0 bg-[radial-gradient(60%_100%_at_12%_0%,rgba(164,200,66,0.2),transparent_65%),radial-gradient(55%_100%_at_88%_100%,rgba(138,206,244,0.24),transparent_65%)]"
+					/>
+					<MarineField
+						className="text-marca-azul"
+						items={[
+							{ name: "wave", x: 93, y: 82, w: 9, op: 0.14, dur: 13 },
+							{
+								name: "fish",
+								x: 84,
+								y: 22,
+								w: 7,
+								rot: -6,
+								flip: true,
+								op: 0.12,
+								dur: 11,
+								delay: 1.4,
+							},
+							{
+								name: "coral",
+								x: 8,
+								y: 86,
+								w: 7,
+								rot: 3,
+								op: 0.1,
+								dur: 16,
+								delay: 2.6,
+							},
+						]}
 					/>
 
 					<div className="max-w-2xl">

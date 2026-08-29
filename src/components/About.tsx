@@ -1,6 +1,7 @@
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
 import { ForceField } from "./ForceField";
+import { MarineField } from "./MarineField";
 
 /* Misión takes the tierra half of the mark, Visión the agua half. The two brand
    colours carry the two statements instead of decorating them. */
@@ -30,7 +31,46 @@ export function About() {
 	const t = useT();
 
 	return (
-		<section id="nosotros" className="bg-white py-24 sm:py-32">
+		<section
+			id="nosotros"
+			className="relative isolate overflow-hidden bg-white py-24 sm:py-32"
+		>
+			<MarineField
+				className="text-azul-700"
+				items={[
+					{
+						name: "dolphin",
+						x: 95,
+						y: 12,
+						w: 15,
+						rot: -10,
+						flip: true,
+						op: 0.06,
+						dur: 17,
+					},
+					{
+						name: "coral",
+						x: 3,
+						y: 30,
+						w: 8,
+						rot: 5,
+						op: 0.05,
+						dur: 15,
+						delay: 1.6,
+					},
+					{
+						name: "fish",
+						x: 88,
+						y: 90,
+						w: 8,
+						rot: 5,
+						flip: true,
+						op: 0.05,
+						dur: 12,
+						delay: 2.4,
+					},
+				]}
+			/>
 			<div className="mx-auto max-w-6xl px-5 sm:px-8">
 				<div className="grid gap-12 lg:grid-cols-[minmax(0,24rem)_1fr] lg:gap-20">
 					<div className="lg:sticky lg:top-28 lg:self-start">
@@ -72,9 +112,12 @@ export function About() {
 
 				{/* Full container width, not nested in the right rail: three columns here
 				    give each blurb ~40 characters instead of ~32. */}
+				{/* Full-bleed below sm: the negative margin cancels the container padding so the
+				    tile grid reaches both screen edges, and the matching padding puts it back
+				    for the text inside, which still needs a readable margin. */}
 				<ForceField
 					tile={20}
-					className="mt-16 border-abismo-900/10 border-t pt-10 pb-12 sm:mt-20"
+					className="-mx-5 mt-16 border-abismo-900/10 border-t px-5 pt-10 pb-12 sm:mx-0 sm:mt-20 sm:px-0"
 				>
 					<h3
 						data-force-item

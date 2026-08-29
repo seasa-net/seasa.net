@@ -2,7 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { MexicoMap } from "../components/MexicoMap";
 import { isProjectId, PROJECTS } from "../data/projects";
 import type { MessageKey } from "../i18n";
-import { useT } from "../i18n";
+import { useDocumentMeta, useT } from "../i18n";
 
 /**
  * Shell only. The horizontal scroll narrative, timeline, media, monitoring stats and
@@ -13,10 +13,11 @@ export function ProjectStory() {
 	const t = useT();
 	const { id } = useParams();
 
-	if (!isProjectId(id)) return <Navigate to="/" replace />;
-
 	const project = PROJECTS.find((p) => p.id === id);
-	if (!project) return <Navigate to="/" replace />;
+	// Hooks must run unconditionally, so the title is computed before any early return.
+	useDocumentMeta(project ? project.state : t("title.projects"));
+
+	if (!isProjectId(id) || !project) return <Navigate to="/" replace />;
 
 	return (
 		<article className="mx-auto max-w-6xl px-5 pt-32 pb-24 sm:px-8">

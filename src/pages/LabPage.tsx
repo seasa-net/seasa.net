@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useT } from "../i18n";
+import { useDocumentMeta, useT } from "../i18n";
 
 /**
  * Shell only, like ProjectStory. The route exists so the Lab panel's call to action
@@ -7,6 +7,7 @@ import { useT } from "../i18n";
  */
 export function LabPage() {
 	const t = useT();
+	useDocumentMeta(t("title.lab"));
 
 	return (
 		<article className="mx-auto max-w-6xl px-5 pt-32 pb-24 sm:px-8">

@@ -88,6 +88,28 @@ export function Footer() {
 									{SITE.email}
 								</a>
 							</li>
+							<li className="text-white/60">
+								{t("footer.phone")}:{" "}
+								<a
+									href={`tel:${SITE.phoneOffice.replace(/\s/g, "")}`}
+									className="text-white/75 transition-colors hover:text-marca-verde"
+								>
+									{SITE.phoneOffice}
+								</a>
+							</li>
+							<li className="text-white/60">
+								{t("footer.mobile")}:{" "}
+								<a
+									href={`tel:${SITE.phoneMobile.replace(/\s/g, "")}`}
+									className="text-white/75 transition-colors hover:text-marca-verde"
+								>
+									{SITE.phoneMobile}
+								</a>
+							</li>
+							<li className="text-white/60">{SITE.address}</li>
+							<li className="text-white/60">
+								{t("footer.offices")}: {SITE.branches.join(" · ")}
+							</li>
 							<li>
 								<a
 									href={SITE.github}

@@ -5,7 +5,8 @@ import { SITE } from "./site";
  * DRAFT LEGAL TEXT. Structure and scope only.
  *
  * TODO(SEASA): this has NOT been reviewed by a lawyer and must be before launch.
- * Bracketed values are placeholders that only SEASA can fill. In Mexico the governing
+ * Company details now come from the official CV, so no placeholders remain, but the
+ * legal wording itself is still a draft. In Mexico the governing
  * instrument for personal data is the Aviso de Privacidad under the LFPDPPP, which is
  * why the privacy document is titled that way rather than "Privacy Policy".
  */
@@ -22,7 +23,7 @@ const es: Record<"privacy" | "terms", LegalDoc> = {
 	privacy: {
 		title: "Aviso de Privacidad",
 		updated: UPDATED,
-		intro: `${SITE.legalName}, con domicilio en [DOMICILIO FISCAL], es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos del Aviso de Privacidad.`,
+		intro: `${SITE.legalName}, con domicilio fiscal en ${SITE.address}, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos del Aviso de Privacidad.`,
 		sections: [
 			{
 				heading: "Datos que recabamos",
@@ -110,7 +111,7 @@ const es: Record<"privacy" | "terms", LegalDoc> = {
 			{
 				heading: "Legislación aplicable",
 				body: [
-					"Estos términos se rigen por la legislación mexicana. Para su interpretación y cumplimiento, las partes se someten a los tribunales competentes de [CIUDAD, ESTADO], renunciando a cualquier otro fuero.",
+					"Estos términos se rigen por la legislación mexicana. Para su interpretación y cumplimiento, las partes se someten a los tribunales competentes de Zitácuaro, Michoacán, renunciando a cualquier otro fuero.",
 				],
 			},
 		],
@@ -121,7 +122,7 @@ const en: Record<"privacy" | "terms", LegalDoc> = {
 	privacy: {
 		title: "Privacy Notice",
 		updated: UPDATED,
-		intro: `${SITE.legalName}, with address at [REGISTERED ADDRESS], is responsible for the processing of your personal data under Mexico's Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP), its Regulations and the Privacy Notice Guidelines. This English version is provided for convenience; the Spanish text prevails.`,
+		intro: `${SITE.legalName}, with registered address at ${SITE.address}, is responsible for the processing of your personal data under Mexico's Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP), its Regulations and the Privacy Notice Guidelines. This English version is provided for convenience; the Spanish text prevails.`,
 		sections: [
 			{
 				heading: "Data we collect",
@@ -209,7 +210,7 @@ const en: Record<"privacy" | "terms", LegalDoc> = {
 			{
 				heading: "Governing law",
 				body: [
-					"These terms are governed by Mexican law. For their interpretation and performance the parties submit to the competent courts of [CITY, STATE], waiving any other jurisdiction.",
+					"These terms are governed by Mexican law. For their interpretation and performance the parties submit to the competent courts of Zitácuaro, Michoacán, waiving any other jurisdiction.",
 				],
 			},
 		],

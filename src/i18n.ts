@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { create } from "zustand";
 
 export const LOCALES = ["es", "en"] as const;
@@ -11,6 +12,7 @@ const es = {
 	"nav.projects": "Proyectos",
 	"nav.lab": "Laboratorio",
 	"nav.contact": "Cotizar",
+	"contact.subject": "Solicitud de cotización",
 	"nav.menu": "Abrir menú",
 	"nav.close": "Cerrar menú",
 	"nav.sections": "Secciones",
@@ -23,17 +25,17 @@ const es = {
 	"hero.cta.secondary": "Ver proyectos",
 	"hero.stat.years": "años de ejecución técnica",
 	"hero.stat.states": "estados con proyectos",
-	"hero.stat.modules": "módulos arrecifales instalados",
+	"hero.stat.reefs": "proyectos de arrecifes artificiales",
 	"about.eyebrow": "Nosotros",
 	"about.title": "Ingeniería, ciencia y ejecución en un mismo equipo.",
 	"about.lead":
 		"SEASA reúne consultoría ambiental, ciencia costera y obra en campo bajo una sola dirección técnica. Un estudio, el permiso que lo acompaña y la restauración que sigue responden al mismo criterio y a la misma evidencia.",
 	"about.mission.label": "Misión",
 	"about.mission.body":
-		"Diseñar, gestionar y ejecutar soluciones ambientales técnicamente sólidas que contribuyan al cumplimiento normativo, la restauración ecológica y el desarrollo sostenible.",
+		"Otorgar servicios de manera integral que atiendan todas las necesidades de nuestros clientes, a través de la diversificación de los servicios y de un trabajo multidisciplinario, para garantizar la calidad en el servicio y ser más competitivos en el mercado mediante la innovación y la mejora continua, utilizando de manera sustentable los recursos naturales.",
 	"about.vision.label": "Visión",
 	"about.vision.body":
-		"Ser referente nacional en consultoría ambiental, restauración marina, ingeniería costera y tecnologías aplicadas al monitoreo de ecosistemas.",
+		"Ser una empresa plenamente identificada por el sector productivo, empresarial y gubernamental en México, bajo principios de seriedad, profesionalismo y responsabilidad, para el desarrollo integral de proyectos sustentables que resuelvan las necesidades de nuestros clientes y mejoren el planeta.",
 	"about.values.label": "Valores",
 	"about.value.rigor": "Rigor técnico",
 	"about.value.rigor.body":
@@ -140,22 +142,38 @@ const es = {
 	"projects.explore": "Explorar proyecto",
 	"projects.map": "Mapa de proyectos por estado",
 	"projects.back": "Volver a proyectos",
+	"photo.aerial":
+		"Línea de módulos arrecifales colocada en el lecho marino, registrada desde dron.",
+	"photo.coral":
+		"Colonia de coral establecida sobre el sustrato, registrada durante monitoreo.",
+	"gallery.label": "Evidencia de campo",
+	"gallery.prev": "Imagen anterior",
+	"gallery.next": "Imagen siguiente",
+	"title.suffix": "SEASA",
+	"title.home": "Soluciones ambientales y energía",
+	"title.lab": "Laboratorio digital",
+	"title.projects": "Proyectos",
+	"meta.description":
+		"SEASA. Consultoría ambiental, manifestaciones de impacto ambiental, arrecifes artificiales fijadores de carbono, oceanografía, hidrología y energías renovables en México.",
+	"photo.divers":
+		"Trabajo de buceo sobre un módulo arrecifal durante el monitoreo.",
 	"projects.soon": "La ficha completa de este proyecto está en preparación.",
 
-	"proj.campeche.place": "Laguna de Términos",
-	"proj.campeche.summary": "Arrecife Artificial Azteca, Laguna de Términos.",
-	"proj.bcs.place": "Bahía de La Paz",
+	"proj.campeche.place": "Isla Aguada",
+	"proj.campeche.summary":
+		"Construcción, hundimiento y colocación de arrecifes artificiales Azteca como compensación ambiental por la extracción de hidrocarburos (2024).",
+	"proj.bcs.place": "La Paz y Los Cabos",
 	"proj.bcs.summary":
-		"Arrecifes, hidrología, bancos de extracción, MIA y restauración.",
-	"proj.guerrero.place": "Isla Ixtapa y Las Gatas",
+		"Arrecifes en Bahía Magdalena, Punta Abreojos y La Bocana; MIA para desarrollos costeros, bancos de material pétreo, hidrología y modelación de transporte litoral.",
+	"proj.guerrero.place": "Zihuatanejo de Azueta",
 	"proj.guerrero.summary":
-		"Fraccionamiento El Mirador, Isla Ixtapa y Museo Submarino Las Gatas.",
-	"proj.michoacan.place": "Costa de Michoacán",
+		"Manifestación de Impacto Ambiental del proyecto RCS Don Elpidio, ingresada y autorizada por SEMARNAT (2023).",
+	"proj.michoacan.place": "Playa Azul y Zitácuaro",
 	"proj.michoacan.summary":
-		"Arrecifes artificiales, acuacultura y soluciones ambientales.",
-	"proj.oaxaca.place": "Bahías de Huatulco",
+		"Arrecifes artificiales en Playa Azul, lonjas pesqueras, acuacultura y el Programa de Ordenamiento Ecológico Local de Zitácuaro.",
+	"proj.oaxaca.place": "Costa de Oaxaca",
 	"proj.oaxaca.summary":
-		"Distribución de módulos y propuestas de restauración marina.",
+		"MIA regional para el desarrollo territorial de la costa mediante arrecifes artificiales para la sustentabilidad pesquera (2018).",
 
 	"lab.eyebrow": "Laboratorio digital",
 	"lab.title":
@@ -184,6 +202,9 @@ const es = {
 	"footer.privacy": "Aviso de privacidad",
 	"footer.terms": "Términos y condiciones",
 	"footer.tagline": "Ingeniería ambiental con evidencia de campo.",
+	"footer.phone": "Oficina",
+	"footer.mobile": "Celular",
+	"footer.offices": "Oficinas",
 	"legal.updated": "Última actualización:",
 	"legal.review":
 		"Documento en borrador. Requiere revisión legal antes de publicarse y contiene marcadores entre corchetes que SEASA debe completar.",
@@ -197,6 +218,7 @@ const en: Record<keyof typeof es, string> = {
 	"nav.projects": "Projects",
 	"nav.lab": "Lab",
 	"nav.contact": "Get a quote",
+	"contact.subject": "Quote request",
 	"nav.menu": "Open menu",
 	"nav.close": "Close menu",
 	"nav.sections": "Sections",
@@ -209,17 +231,17 @@ const en: Record<keyof typeof es, string> = {
 	"hero.cta.secondary": "View projects",
 	"hero.stat.years": "years of field execution",
 	"hero.stat.states": "states with active projects",
-	"hero.stat.modules": "reef modules installed",
+	"hero.stat.reefs": "artificial reef projects",
 	"about.eyebrow": "About us",
 	"about.title": "Engineering, science and execution in one team.",
 	"about.lead":
 		"SEASA brings environmental consulting, coastal science and field execution under a single technical direction. A study, the permit that accompanies it and the restoration that follows answer to the same criteria and the same evidence.",
 	"about.mission.label": "Mission",
 	"about.mission.body":
-		"To design, manage and execute technically sound environmental solutions that advance regulatory compliance, ecological restoration and sustainable development.",
+		"To provide services in an integrated way that meet every one of our clients' needs, through diversification of services and multidisciplinary work, guaranteeing quality of service and making us more competitive in the market through innovation and continuous improvement, using natural resources sustainably.",
 	"about.vision.label": "Vision",
 	"about.vision.body":
-		"To be the national reference in environmental consulting, marine restoration, coastal engineering and applied ecosystem-monitoring technology.",
+		"To be a company fully recognised by the productive, business and government sectors in Mexico, working under principles of seriousness, professionalism and responsibility, for the integrated development of sustainable projects that meet our clients' needs and improve the planet.",
 	"about.values.label": "Values",
 	"about.value.rigor": "Technical rigour",
 	"about.value.rigor.body":
@@ -326,22 +348,37 @@ const en: Record<keyof typeof es, string> = {
 	"projects.explore": "Explore project",
 	"projects.map": "Map of projects by state",
 	"projects.back": "Back to projects",
+	"photo.aerial":
+		"Line of reef modules placed on the seabed, recorded by drone.",
+	"photo.coral":
+		"Coral colony established on the substrate, recorded during monitoring.",
+	"gallery.label": "Field evidence",
+	"gallery.prev": "Previous image",
+	"gallery.next": "Next image",
+	"title.suffix": "SEASA",
+	"title.home": "Environmental solutions and energy",
+	"title.lab": "Digital lab",
+	"title.projects": "Projects",
+	"meta.description":
+		"SEASA. Environmental consulting, environmental impact statements, carbon-fixing artificial reefs, oceanography, hydrology and renewable energy in Mexico.",
+	"photo.divers": "Dive work on a reef module during monitoring.",
 	"projects.soon": "The full record for this project is in preparation.",
 
-	"proj.campeche.place": "Laguna de Términos",
-	"proj.campeche.summary": "Azteca Artificial Reef, Laguna de Términos.",
-	"proj.bcs.place": "Bahía de La Paz",
+	"proj.campeche.place": "Isla Aguada",
+	"proj.campeche.summary":
+		"Construction, sinking and placement of Azteca artificial reefs as environmental compensation for hydrocarbon extraction (2024).",
+	"proj.bcs.place": "La Paz and Los Cabos",
 	"proj.bcs.summary":
-		"Reefs, hydrology, extraction banks, impact statements and restoration.",
-	"proj.guerrero.place": "Isla Ixtapa and Las Gatas",
+		"Reefs at Bahía Magdalena, Punta Abreojos and La Bocana; impact statements for coastal developments, aggregate banks, hydrology and littoral transport modelling.",
+	"proj.guerrero.place": "Zihuatanejo de Azueta",
 	"proj.guerrero.summary":
-		"El Mirador development, Isla Ixtapa and the Las Gatas Underwater Museum.",
-	"proj.michoacan.place": "Michoacán coast",
+		"Environmental Impact Statement for the RCS Don Elpidio project, filed and authorised by SEMARNAT (2023).",
+	"proj.michoacan.place": "Playa Azul and Zitácuaro",
 	"proj.michoacan.summary":
-		"Artificial reefs, aquaculture and environmental solutions.",
-	"proj.oaxaca.place": "Bahías de Huatulco",
+		"Artificial reefs at Playa Azul, fishery halls, aquaculture and the Local Ecological Zoning Programme for Zitácuaro.",
+	"proj.oaxaca.place": "Oaxaca coast",
 	"proj.oaxaca.summary":
-		"Module distribution and marine restoration proposals.",
+		"Regional impact statement for territorial development of the coast through artificial reefs for fishery sustainability (2018).",
 
 	"lab.eyebrow": "Digital lab",
 	"lab.title": "Tools that turn field work into evidence anyone can consult.",
@@ -369,6 +406,9 @@ const en: Record<keyof typeof es, string> = {
 	"footer.privacy": "Privacy notice",
 	"footer.terms": "Terms and conditions",
 	"footer.tagline": "Environmental engineering backed by field evidence.",
+	"footer.phone": "Office",
+	"footer.mobile": "Mobile",
+	"footer.offices": "Offices",
 	"legal.updated": "Last updated:",
 	"legal.review":
 		"Draft document. It requires legal review before publication and contains bracketed placeholders for SEASA to complete.",
@@ -431,6 +471,32 @@ export const useLocaleStore = create<LocaleStore>((set) => {
 export function useT() {
 	const locale = useLocaleStore((s) => s.locale);
 	return (key: MessageKey) => dict[locale][key];
+}
+
+/**
+ * Sets the document title and meta description for a page.
+ *
+ * These live outside React's tree in index.html, so nothing was updating them: every
+ * route and both languages shared one hardcoded Spanish title. The browser tab is part
+ * of the translation surface, and it is what search engines index.
+ */
+export function useDocumentMeta(title: string) {
+	const t = useT();
+	const locale = useLocaleStore((s) => s.locale);
+	const description = t("meta.description");
+	useEffect(() => {
+		document.title = `${title} | ${t("title.suffix")}`;
+		document.documentElement.lang = locale;
+		let tag = document.querySelector<HTMLMetaElement>(
+			'meta[name="description"]',
+		);
+		if (!tag) {
+			tag = document.createElement("meta");
+			tag.name = "description";
+			document.head.appendChild(tag);
+		}
+		tag.content = description;
+	}, [title, description, locale, t]);
 }
 
 /**

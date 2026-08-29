@@ -174,6 +174,6 @@ export const SITES: Record<string, { x: number; y: number }> = {
 	campeche: { x: 847.6, y: 494.7 },
 	bcs: { x: 255.4, y: 308.4 },
 	guerrero: { x: 531.9, y: 528.5 },
-	michoacan: { x: 511.7, y: 517.6 },
+	michoacan: { x: 506.7, y: 516.6 },
 	oaxaca: { x: 703.1, y: 590.5 },
 };

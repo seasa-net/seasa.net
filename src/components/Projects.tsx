@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import coralColony from "../assets/coral-colony.jpg";
+import reefAerial from "../assets/reef-line-aerial.jpg";
+import reefDivers from "../assets/reef-module-divers.jpg";
 import { PROJECTS, type ProjectId } from "../data/projects";
 import type { MessageKey } from "../i18n";
 import { useT } from "../i18n";
+import { MarineField } from "./MarineField";
 import { MexicoMap } from "./MexicoMap";
+import { PhotoCarousel } from "./PhotoCarousel";
 
 const msg = (id: ProjectId, part: "place" | "summary"): MessageKey =>
 	`proj.${id}.${part}`;
@@ -13,7 +18,68 @@ export function Projects() {
 	const [activeId, setActiveId] = useState<ProjectId>(PROJECTS[0].id);
 
 	return (
-		<section id="proyectos" className="bg-white py-24 sm:py-32">
+		<section
+			id="proyectos"
+			className="relative isolate overflow-hidden bg-white py-24 sm:py-32"
+		>
+			{/* Background texture, decorative and well under the text contrast floor. */}
+			<MarineField
+				className="text-azul-700"
+				items={[
+					{
+						name: "fish",
+						x: 94,
+						y: 16,
+						w: 20,
+						rot: -6,
+						flip: true,
+						op: 0.07,
+						dur: 15,
+					},
+					{
+						name: "fish",
+						x: 84,
+						y: 26,
+						w: 11,
+						rot: 4,
+						flip: true,
+						op: 0.05,
+						dur: 12,
+						delay: 1.8,
+					},
+					{
+						name: "dolphin",
+						x: 6,
+						y: 62,
+						w: 16,
+						rot: 7,
+						op: 0.06,
+						dur: 18,
+						delay: 2.5,
+					},
+					{
+						name: "coral",
+						x: 16,
+						y: 94,
+						w: 8,
+						rot: -3,
+						op: 0.06,
+						dur: 14,
+						delay: 0.6,
+					},
+					{
+						name: "wave",
+						x: 60,
+						y: 6,
+						w: 6,
+						op: 0.05,
+						dur: 13,
+						delay: 3.4,
+						lgOnly: true,
+					},
+				]}
+			/>
+
 			<div className="mx-auto max-w-6xl px-5 sm:px-8">
 				<div className="max-w-3xl">
 					<p className="font-semibold text-[11px] text-azul-700 uppercase tracking-[0.22em]">
@@ -113,6 +179,39 @@ export function Projects() {
 							);
 						})}
 					</ul>
+				</div>
+
+				{/* After the map, not before it: the evidence follows the claim rather than
+				    interrupting the heading. */}
+				<div className="mt-16">
+					<PhotoCarousel
+						label={t("gallery.label")}
+						prevLabel={t("gallery.prev")}
+						nextLabel={t("gallery.next")}
+						photos={[
+							{
+								src: reefAerial,
+								alt: t("photo.aerial"),
+								caption: t("photo.aerial"),
+								width: 2178,
+								height: 1247,
+							},
+							{
+								src: reefDivers,
+								alt: t("photo.divers"),
+								caption: t("photo.divers"),
+								width: 1280,
+								height: 706,
+							},
+							{
+								src: coralColony,
+								alt: t("photo.coral"),
+								caption: t("photo.coral"),
+								width: 960,
+								height: 1280,
+							},
+						]}
+					/>
 				</div>
 			</div>
 		</section>
