@@ -161,7 +161,7 @@ const es = {
 
 	"proj.campeche.place": "Isla Aguada",
 	"proj.campeche.summary":
-		"Construcción, hundimiento y colocación de arrecifes artificiales Azteca como compensación ambiental por la extracción de hidrocarburos (2024).",
+		"Construcción, hundimiento y colocación de arrecifes artificiales como compensación ambiental por la extracción de hidrocarburos (2024).",
 	"proj.bcs.place": "La Paz y Los Cabos",
 	"proj.bcs.summary":
 		"Arrecifes en Bahía Magdalena, Punta Abreojos y La Bocana; MIA para desarrollos costeros, bancos de material pétreo, hidrología y modelación de transporte litoral.",
@@ -366,7 +366,7 @@ const en: Record<keyof typeof es, string> = {
 
 	"proj.campeche.place": "Isla Aguada",
 	"proj.campeche.summary":
-		"Construction, sinking and placement of Azteca artificial reefs as environmental compensation for hydrocarbon extraction (2024).",
+		"Construction, sinking and placement of artificial reefs as environmental compensation for hydrocarbon extraction (2024).",
 	"proj.bcs.place": "La Paz and Los Cabos",
 	"proj.bcs.summary":
 		"Reefs at Bahía Magdalena, Punta Abreojos and La Bocana; impact statements for coastal developments, aggregate banks, hydrology and littoral transport modelling.",
